@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TokBoost — Instant TikTok Growth & Followers</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              pink: '#FE2C55',
+              cyan: '#25F4EE',
+              dark: '#111827',
+              accent: '#FF004F'
+            }
+          },
+          boxShadow: {
+            'subtle': '0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -2px rgba(0, 0, 0, 0.02)',
+            'glow-pink': '0 8px 24px -4px rgba(254, 44, 85, 0.35)',
+            'card': '0 20px 45px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth focus transition & clean selection */
+    ::selection {
+      background-color: #FE2C55;
+      color: #ffffff;
+    }
+    
+    /* Background subtle mesh glow */
+    .hero-glow-1 {
+      background: radial-gradient(circle, rgba(254, 44, 85, 0.09) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .hero-glow-2 {
+      background: radial-gradient(circle, rgba(37, 244, 238, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+  </style>
+</head>
+
+<body class="bg-[#F8FAFC] text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+  <!-- Ambient Decorative Background Glows -->
+  <div class="fixed top-[-100px] left-1/2 -translate-x-1/2 w-[700px] h-[550px] hero-glow-1 pointer-events-none -z-10"></div>
+  <div class="fixed top-[20%] right-[-100px] w-[500px] h-[500px] hero-glow-2 pointer-events-none -z-10"></div>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4"></div>
+
+  <!-- Navigation Bar -->
+  <header class="w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center shadow-md">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+          </svg>
+        </div>
+        <div class="flex items-baseline gap-1">
+          <span class="text-lg font-black tracking-tight text-slate-900">TokBoost</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-pink"></span>
+        </div>
+      </a>
+
+      <!-- Server Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-700">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>System Online</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Hero & Input Form Content -->
+  <main class="flex-1 flex items-center justify-center px-4 sm:px-6 py-12 md:py-16">
+    <div class="max-w-xl w-full mx-auto text-center">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-subtle text-xs font-medium text-slate-600 mb-6">
+        <span class="px-2 py-0.5 rounded-full bg-brand-pink/10 text-brand-pink font-bold text-[10px]">NEW</span>
+        <span>Instant TikTok FYP Growth Service</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-8">
+        Boost your TikTok <br class="hidden sm:inline">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-accent">
+          followers in seconds.
+        </span>
+      </h1>
+
+      <!-- Main Input Card -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-card text-left transition-all">
+        
+        <form id="boostForm" onsubmit="handleBoostSubmit(event)" class="space-y-5">
+          
+          <!-- Username Input Field -->
+          <div>
+            <label for="usernameInput" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+              TikTok Username
+            </label>
+            <div class="relative rounded-2xl transition-all">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 font-bold text-base">
+                @
+              </div>
+              <input 
+                type="text" 
+                id="usernameInput" 
+                placeholder="your_username" 
+                autocomplete="off"
+                class="w-full pl-10 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 font-semibold text-base focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-4 focus:ring-brand-pink/10 transition-all"
+              >
+            </div>
+          </div>
+
+          <!-- Quick Package Selection Pills & Custom Input -->
+          <div>
+            <div class="mb-2">
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">
+                Choose Follower Amount
+              </label>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="grid grid-cols-3 gap-2.5 sm:gap-3 mb-3">
+              <!-- +100 (TikTok Cyan) -->
+              <button 
+                type="button" 
+                data-amount="100"
+                data-theme="cyan"
+                onclick="selectAmount(100, this)" 
+                class="amount-btn py-3.5 sm:py-4 px-2 rounded-2xl border-2 border-[#00b4b8] bg-[#00b4b8]/5 ring-2 ring-[#00b4b8]/20 shadow-sm text-center transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
+              >
+                <span class="block text-xl sm:text-2xl font-black tracking-tight text-[#00b4b8]">
+                  +100
+                </span>
+              </button>
+
+              <!-- +500 (TikTok Pink) -->
+              <button 
+                type="button" 
+                data-amount="500"
+                data-theme="pink"
+                onclick="selectAmount(500, this)" 
+                class="amount-btn py-3.5 sm:py-4 px-2 rounded-2xl border-2 border-slate-200 bg-white text-center shadow-sm transition-all duration-200 hover:border-slate-300 hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
+              >
+                <span class="block text-xl sm:text-2xl font-black tracking-tight text-brand-pink">
+                  +500
+                </span>
+              </button>
+
+              <!-- +1,000 (TikTok Signature Duo Gradient) -->
+              <button 
+                type="button" 
+                data-amount="1000"
+                data-theme="duo"
+                onclick="selectAmount(1000, this)" 
+                class="amount-btn py-3.5 sm:py-4 px-2 rounded-2xl border-2 border-slate-200 bg-white text-center shadow-sm transition-all duration-200 hover:border-slate-300 hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
+              >
+                <span class="block text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-pink via-[#ff0050] to-[#00b4b8]">
+                  +1,000
+                </span>
+              </button>
+            </div>
+
+            <!-- Custom Amount Input Field -->
+            <div class="relative rounded-2xl">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-brand-pink font-black text-xl sm:text-2xl">
+                +
+              </div>
+              <input 
+                type="number" 
+                id="customAmountInput" 
+                min="10" 
+                max="100000" 
+                placeholder="Or enter custom amount (e.g. 2,500)" 
+                class="w-full pl-10 pr-24 py-3.5 sm:py-4 bg-slate-50 border-2 border-slate-200 rounded-2xl text-brand-pink placeholder:text-slate-400 placeholder:text-xs sm:placeholder:text-sm placeholder:font-semibold placeholder:tracking-normal font-black text-xl sm:text-2xl tracking-tight focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-4 focus:ring-brand-pink/10 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                oninput="handleCustomAmount(this.value)"
+              >
+              <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider">
+                followers
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            id="submitBtn" 
+            class="w-full py-4 px-6 rounded-2xl bg-brand-pink hover:bg-[#e0264b] text-white font-extrabold text-sm sm:text-base tracking-wide shadow-glow-pink hover:shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <svg class="w-5 h-5 animate-spin hidden" id="spinnerIcon" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span id="btnText">Boost Account Now 🚀</span>
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Live Follower Counter Modal (Minimal & Clean) -->
+  <div id="counterModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-sm transition-all duration-300">
+    <div id="counterModalCard" class="relative w-full max-w-sm bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xl text-center transition-all duration-300 transform scale-95 opacity-0">
+      
+      <!-- Close Button -->
+      <button 
+        type="button" 
+        onclick="closeCounterModal()" 
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-700 flex items-center justify-center transition-all focus:outline-none"
+        aria-label="Close modal"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Account Name -->
+      <p id="resUsername" class="font-bold text-slate-500 text-sm">@user</p>
+
+      <!-- Big Minimal Counter -->
+      <div class="my-6">
+        <div id="liveCounterNumber" class="text-5xl sm:text-6xl font-black text-slate-900 tracking-tight tabular-nums">
+          +0
+        </div>
+        <p id="counterStatus" class="text-xs font-semibold text-slate-400 mt-2">
+          Delivering <span id="targetCount" class="font-bold text-slate-700">100</span> followers...
+        </p>
+      </div>
+
+      <!-- Simple Progress Bar -->
+      <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden mb-6">
+        <div id="dispatchBar" class="bg-brand-pink h-full rounded-full transition-all duration-150" style="width: 0%"></div>
+      </div>
+
+      <!-- Action Button -->
+      <button 
+        type="button" 
+        onclick="closeCounterModal()" 
+        id="modalActionBtn" 
+        class="w-full py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-all shadow-sm"
+      >
+        Close
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Clean Minimal Footer -->
+  <footer class="w-full py-6 text-center text-xs text-slate-400 border-t border-slate-200/60 bg-white/50">
+    <div class="max-w-5xl mx-auto px-4">
+      <p>© 2026 TokBoost. Simple & safe social media growth engine.</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // State
+    let selectedFollowers = 100;
+    let isProcessing = false;
+    let counterInterval = null;
+
+    // Sample handles for fake live stream feed
+    const sampleFollowerHandles = [
+      'alex.vibe', 'sara_dance', 'kyle.tok', 'noah_99', 'clara.m', 
+      'vlad_kyiv', 'olivia.creates', 'leo_beats', 'emma_fyp', 'dmitro.k'
+    ];
+
+    // Modal popup triggers
+    function openCounterModal() {
+      const modal = document.getElementById('counterModal');
+      const card = document.getElementById('counterModalCard');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 20);
+    }
+
+    function closeCounterModal() {
+      const modal = document.getElementById('counterModal');
+      const card = document.getElementById('counterModalCard');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 250);
+    }
+
+    // Custom Toast Notification (Never alert)
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      
+      const borderColor = type === 'success' ? 'border-emerald-300' : 'border-rose-300';
+      const textColor = type === 'success' ? 'text-emerald-700' : 'text-rose-700';
+      const dotColor = type === 'success' ? 'bg-emerald-500' : 'bg-rose-500';
+
+      toast.className = `p-3.5 rounded-2xl bg-white border ${borderColor} text-slate-800 text-xs sm:text-sm shadow-card flex items-center gap-3 backdrop-blur-md pointer-events-auto transition-all duration-300 translate-x-10 opacity-0`;
+      toast.innerHTML = `
+        <span class="w-2.5 h-2.5 rounded-full ${dotColor} shrink-0"></span>
+        <div class="flex-1 font-medium ${textColor}">${message}</div>
+      `;
+
+      container.appendChild(toast);
+      
+      // Entrance
+      setTimeout(() => {
+        toast.classList.remove('translate-x-10', 'opacity-0');
+      }, 20);
+
+      // Auto dismiss
+      setTimeout(() => {
+        toast.classList.add('translate-x-10', 'opacity-0');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    // Amount Selection Pill Handler
+    function selectAmount(amount, btnElement) {
+      selectedFollowers = amount;
+
+      // Reset custom input field
+      const customInput = document.getElementById('customAmountInput');
+      if (customInput) {
+        customInput.value = '';
+        customInput.classList.remove('border-brand-pink', 'ring-2', 'ring-brand-pink/20', 'bg-brand-pink/5');
+        customInput.classList.add('border-slate-200', 'bg-slate-50');
+      }
+
+      // Reset all buttons to default white
+      document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.classList.remove(
+          'ring-2', 'shadow-md', 'scale-[1.02]',
+          'border-brand-pink', 'bg-brand-pink/5', 'ring-brand-pink/20',
+          'border-[#00b4b8]', 'bg-[#00b4b8]/5', 'ring-[#00b4b8]/20'
+        );
+        btn.classList.add('border-slate-200', 'bg-white', 'shadow-sm');
+      });
+
+      // Highlight selected button based on its TikTok theme
+      btnElement.classList.remove('border-slate-200', 'bg-white');
+      const theme = btnElement.getAttribute('data-theme');
+      if (theme === 'cyan') {
+        btnElement.classList.add('border-[#00b4b8]', 'bg-[#00b4b8]/5', 'ring-2', 'ring-[#00b4b8]/20', 'shadow-md', 'scale-[1.02]');
+      } else if (theme === 'pink') {
+        btnElement.classList.add('border-brand-pink', 'bg-brand-pink/5', 'ring-2', 'ring-brand-pink/20', 'shadow-md', 'scale-[1.02]');
+      } else {
+        btnElement.classList.add('border-brand-pink', 'bg-gradient-to-r', 'from-brand-pink/5', 'to-[#00b4b8]/5', 'ring-2', 'ring-brand-pink/20', 'shadow-md', 'scale-[1.02]');
+      }
+    }
+
+    // Handle Custom Amount Input
+    function handleCustomAmount(val) {
+      const parsed = parseInt(val, 10);
+      const customInput = document.getElementById('customAmountInput');
+
+      // Deselect all preset buttons
+      document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.classList.remove(
+          'ring-2', 'shadow-md', 'scale-[1.02]',
+          'border-brand-pink', 'bg-brand-pink/5', 'ring-brand-pink/20',
+          'border-[#00b4b8]', 'bg-[#00b4b8]/5', 'ring-[#00b4b8]/20'
+        );
+        btn.classList.add('border-slate-200', 'bg-white', 'shadow-sm');
+      });
+
+      if (!isNaN(parsed) && parsed > 0) {
+        selectedFollowers = parsed;
+        if (customInput) {
+          customInput.classList.remove('border-slate-200', 'bg-slate-50');
+          customInput.classList.add('border-brand-pink', 'ring-2', 'ring-brand-pink/20', 'bg-brand-pink/5');
+        }
+      } else {
+        selectedFollowers = 0;
+        if (customInput) {
+          customInput.classList.remove('border-brand-pink', 'ring-2', 'ring-brand-pink/20', 'bg-brand-pink/5');
+          customInput.classList.add('border-slate-200', 'bg-slate-50');
+        }
+      }
+    }
+
+    // Handle Form Submit
+    function handleBoostSubmit(e) {
+      e.preventDefault();
+
+      if (isProcessing) return;
+
+      const input = document.getElementById('usernameInput');
+      let username = input.value.trim().replace(/^@+/, '');
+
+      if (!username) {
+        showToast('Please enter your TikTok username to proceed.', 'error');
+        input.focus();
+        return;
+      }
+
+      if (!selectedFollowers || selectedFollowers <= 0) {
+        showToast('Please enter or select a valid follower amount.', 'error');
+        document.getElementById('customAmountInput')?.focus();
+        return;
+      }
+
+      isProcessing = true;
+      if (counterInterval) clearInterval(counterInterval);
+
+      const btn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const spinner = document.getElementById('spinnerIcon');
+      const resUsername = document.getElementById('resUsername');
+      const liveCounterNumber = document.getElementById('liveCounterNumber');
+      const targetCount = document.getElementById('targetCount');
+      const dispatchBar = document.getElementById('dispatchBar');
+      const counterStatus = document.getElementById('counterStatus');
+      const modalActionBtn = document.getElementById('modalActionBtn');
+
+      btnText.textContent = 'Connecting...';
+      spinner.classList.remove('hidden');
+      btn.classList.add('opacity-80', 'cursor-not-allowed');
+
+      setTimeout(() => {
+        btnText.textContent = 'Boost Account Now 🚀';
+        spinner.classList.add('hidden');
+        btn.classList.remove('opacity-80', 'cursor-not-allowed');
+        isProcessing = false;
+
+        let currentDelivered = 0;
+        const totalTarget = selectedFollowers;
+
+        resUsername.textContent = `@${username}`;
+        targetCount.textContent = totalTarget.toLocaleString();
+        liveCounterNumber.textContent = '+0';
+        dispatchBar.style.width = '0%';
+        counterStatus.innerHTML = `Delivering <span class="font-bold text-slate-700">${totalTarget.toLocaleString()}</span> followers...`;
+        modalActionBtn.textContent = 'Cancel';
+
+        openCounterModal();
+
+        // Speed calculation for dynamic countdown
+        const stepSize = Math.max(1, Math.ceil(totalTarget / 40));
+        const intervalTime = Math.max(60, Math.floor(4500 / (totalTarget / stepSize)));
+
+        counterInterval = setInterval(() => {
+          currentDelivered += Math.floor(Math.random() * stepSize) + 1;
+          
+          if (currentDelivered >= totalTarget) {
+            currentDelivered = totalTarget;
+            clearInterval(counterInterval);
+
+            dispatchBar.style.width = '100%';
+            counterStatus.innerHTML = `<span class="text-emerald-600 font-bold">Successfully delivered ${totalTarget.toLocaleString()} followers!</span>`;
+            modalActionBtn.textContent = 'Done';
+            showToast(`+${totalTarget.toLocaleString()} followers delivered to @${username}!`);
+          } else {
+            const percent = Math.floor((currentDelivered / totalTarget) * 100);
+            dispatchBar.style.width = `${percent}%`;
+          }
+
+          liveCounterNumber.textContent = `+${currentDelivered.toLocaleString()}`;
+        }, intervalTime);
+
+      }, 600);
+    }
+  </script>
+
+</body>
+</html>
